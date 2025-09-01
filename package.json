@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/richie2909/endpoint/issues"
   },
-  "homepage": "https://github.com/richie2909/endpoint#readme"
+  "homepage": "https://github.com/richie2909/endpoint#readme",
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2"
+  }
 }

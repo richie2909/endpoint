@@ -6,7 +6,6 @@ import fetch from "node-fetch";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 8000;
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_KEY;
@@ -148,7 +147,6 @@ async function generateAnswer(contextBlocks, questionText) {
   if (!resp.ok) throw new Error(`HF generation failed: ${await resp.text()}`);
 
   const data = await resp.json();
-  // Hugging Face returns different formats depending on model
   const answer = data.generated_text || data[0]?.generated_text || "";
   return cleanText(answer) || "I couldn't find any relevant information in the posts.";
 }
@@ -192,5 +190,5 @@ app.post("/admin/embed-missing", async (req, res) => {
   }
 });
 
-// -------------------- Start Server --------------------
-app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+// ✅ Export app for Vercel
+export default app;
